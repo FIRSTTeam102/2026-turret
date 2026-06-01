@@ -6,24 +6,33 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.revrobotics.spark.SparkFlex;
+import com.revrobotics.spark.SparkBase.ControlType;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
 
-public class ExampleSubsystem extends SubsystemBase {
+
+public class Turret extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  public ExampleSubsystem() {}
+
+  private SparkFlex turretMotor = new SparkFlex(0, null);
+  private double kP = 0.0001; 
+  private double kD = 0.000;
+  private double goalX = 0;
+  private double lastError =0; 
+  private double angleTolerance = 0.2; //TODO might change 
+  private final double max_power = 0.5; //TODO might change 
+  double power = 0.0;
+  
+
+  public Turret() {
+  }
 
   /**
    * Example command factory method.
    *
    * @return a command
    */
-  public Command exampleMethodCommand() {
-    // Inline construction of command goes here.
-    // Subsystem::RunOnce implicitly requires `this` subsystem.
-    return runOnce(
-        () -> {
-          /* one-time action goes here */
-        });
-  }
+ 
 
   /**
    * An example method querying a boolean state of the subsystem (for example, a digital sensor).
