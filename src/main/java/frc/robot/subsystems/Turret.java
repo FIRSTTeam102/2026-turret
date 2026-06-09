@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
-
+import edu.wpi.first.wpilibj.Timer;
 
 public class Turret extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
@@ -23,8 +23,24 @@ public class Turret extends SubsystemBase {
   private final double max_power = 0.5; //TODO might change 
   double power = 0.0;
   
+  //make elasped timer 
+
+  public void setkP(double newkP){
+    kP= newkP;
+  }
+
+  public void setkD(double newkD){
+    kD= newkD;
+  }
+
+ 
 
   public Turret() {
+
+
+
+
+
   }
 
   /**
